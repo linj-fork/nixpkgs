@@ -179,6 +179,7 @@ let
       service quota-status {
         executable = ${dovecotPkg}/libexec/dovecot/quota-status -p postfix
         inet_listener {
+          address = 127.0.0.1
           port = ${cfg.quotaPort}
         }
         client_limit = 1
