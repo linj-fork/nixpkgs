@@ -1,0 +1,16 @@
+The ghostscript package in Nixpkgs makes sure to have libgs as its
+dependency.  This runtime check for libgs in camelot package is not
+needed.
+
+--- a/camelot/backends/ghostscript_backend.py
++++ b/camelot/backends/ghostscript_backend.py
+@@ -6,8 +6,7 @@ from ctypes.util import find_library
+ 
+ 
+ def installed_posix():
+-    library = find_library("gs")
+-    return library is not None
++    return True
+ 
+ 
+ def installed_windows():
