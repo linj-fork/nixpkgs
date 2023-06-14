@@ -30,6 +30,10 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ setuptools ];
 
+  patches = [
+    ./remove-runtime-check-for-libgs.patch
+  ];
+
   propagatedBuildInputs = [
     charset-normalizer
     chardet
