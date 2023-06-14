@@ -1,0 +1,23 @@
+--- a/ghostscript/_gsprint.py
++++ b/ghostscript/_gsprint.py
+@@ -523,11 +523,14 @@ else:
+     try:
+         libgs = cdll.LoadLibrary("libgs.so")
+     except OSError:
+-        # shared object file not found
+-        import ctypes.util
+-        libgs = ctypes.util.find_library('gs')
+-        if not libgs:
+-            raise RuntimeError('Can not find Ghostscript library (libgs)')
+-        libgs = cdll.LoadLibrary(libgs)
++        try:
++            libgs = cdll.LoadLibrary("@gsLibPath@")
++        except OSError:
++            # shared object file not found
++            import ctypes.util
++            libgs = ctypes.util.find_library('gs')
++            if not libgs:
++                raise RuntimeError('Can not find Ghostscript library (libgs)')
++            libgs = cdll.LoadLibrary(libgs)
+ 
+ del __win32_finddll
