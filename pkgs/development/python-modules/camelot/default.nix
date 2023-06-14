@@ -12,6 +12,7 @@
   pypdf,
   opencv4,
   setuptools,
+  ghostscript,
 }:
 
 buildPythonPackage rec {
@@ -36,6 +37,7 @@ buildPythonPackage rec {
     openpyxl
     pypdf
     opencv4
+    ghostscript
   ];
 
   doCheck = false;
