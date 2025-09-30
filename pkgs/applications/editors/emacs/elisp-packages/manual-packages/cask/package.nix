@@ -58,6 +58,7 @@ melpaBuild (
       # Use Nix provided dependencies instead of letting Cask bootstrap itself
       (replaceVars ./0001-cask-bootstrap.diff {
         inherit depsMod loadPaths nativeLoadPaths;
+        out = null;
       })
     ];
 
@@ -78,6 +79,8 @@ melpaBuild (
     postPatch = ''
       lispdir=$out/share/emacs/site-lisp/elpa/cask-${finalAttrs.melpaVersion} \
         substituteAllInPlace bin/cask
+
+      substituteInPlace cask-bootstrap.el --replace "@out@" "\"$out/share/emacs/native-lisp\""
     '';
 
     postInstall = ''
