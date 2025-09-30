@@ -12,7 +12,7 @@ diff --git a/cask-bootstrap.el b/cask-bootstrap.el
 +    (push path load-path)))
  
 -(defvar cask-directory)
-+(let ((paths '(@nativeLoadPaths@ @out@)))
++(let ((paths '(@nativeLoadPaths@)))
 +  (dolist (path paths)
 +    (push path native-comp-eln-load-path)))
  
