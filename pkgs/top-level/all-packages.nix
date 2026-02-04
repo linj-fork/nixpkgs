@@ -9857,9 +9857,11 @@ with pkgs;
     emacs30-nox
     emacs30-pgtk
 
+    emacs30-plus
     emacs30-macport
     ;
 
+  emacs-plus = emacs30-plus;
   emacs-macport = emacs30-macport;
   emacs = emacs30;
   emacs-gtk = emacs30-gtk3;

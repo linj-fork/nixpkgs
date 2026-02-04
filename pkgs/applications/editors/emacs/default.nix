@@ -31,6 +31,8 @@ lib.makeScope pkgs.newScope (
       withPgtk = true;
     };
 
+    emacs30-plus = callPackage self.sources.emacs30-plus inheritedArgs;
+
     emacs30-macport = callPackage (self.sources.emacs30-macport) (
       inheritedArgs
       // {

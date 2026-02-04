@@ -119,6 +119,37 @@ in
     ];
   });
 
+  emacs30-plus = import ./make-emacs.nix (mkArgs {
+    pname = "emacs-plus";
+    version = "30.2";
+    variant = "mainline"; # TODO add a plus variant
+    rev = "emacs-30.2";
+    hash = "sha256-W2eZ+cNQhi/fMeRkwOqSKU7Vzvp43WUOpiwaLLNEXtg=";
+    patches = fetchpatch: [
+      (fetchpatch {
+        url = "https://github.com/d12frosted/homebrew-emacs-plus/raw/cc1d484049000d5adf37cf3f0234fbbeb243fb5e/patches/emacs-30/fix-macos-tahoe-scrolling.patch";
+        hash = "sha256-Hf9oZ5ImBnxTLa6yS02UDzBEgJEGAwNq/svJ3S35uKw=";
+      })
+      (fetchpatch {
+        # fetchpatch does not support symlink, follow symlink manually
+        url = "https://github.com/d12frosted/homebrew-emacs-plus/raw/cc1d484049000d5adf37cf3f0234fbbeb243fb5e/patches/emacs-28/fix-window-role.patch";
+        hash = "sha256-+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
+      })
+      (fetchpatch {
+        url = "https://github.com/d12frosted/homebrew-emacs-plus/raw/cc1d484049000d5adf37cf3f0234fbbeb243fb5e/patches/emacs-30/round-undecorated-frame.patch";
+        hash = "sha256-uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
+      })
+      (fetchpatch {
+        url = "https://github.com/d12frosted/homebrew-emacs-plus/raw/cc1d484049000d5adf37cf3f0234fbbeb243fb5e/patches/emacs-30/system-appearance.patch";
+        hash = "sha256-3QLq91AQ6E921/W9nfDjdOUWR8YVsqBAT/W9c1woqAw=";
+      })
+      (fetchpatch {
+        url = "https://github.com/d12frosted/homebrew-emacs-plus/raw/cc1d484049000d5adf37cf3f0234fbbeb243fb5e/patches/emacs-30/treesit-compatibility.patch";
+        hash = "sha256-zJHcQ604D7D3pCF+hNfbf8p1xW5490yzrMt1lUsyJQY=";
+      })
+    ];
+  });
+
   emacs30-macport = import ./make-emacs.nix (mkArgs {
     pname = "emacs-mac";
     version = "30.2.50";
