@@ -1127,7 +1127,7 @@ in
 
     environment.systemPackages = [ cfg.package ];
 
-    warnings = optional isPre24 ''
+    warnings = optional false ''
       While Dovecot 2.3 is not yet deprecated or EOL,
       there is a newer version available in Nixpkgs (Dovecot 2.4).
       Check https://doc.dovecot.org/latest/installation/upgrade/2.3-to-2.4.html
